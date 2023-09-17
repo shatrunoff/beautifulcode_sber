@@ -14,10 +14,10 @@ class Portfolio:
 
     def buy_asset(self, asset, quantity):
         if asset in self.assets and quantity > 0:
-            total_cost = asset.value * quantity
-            if total_cost <= self.balance:
+            cost = asset.value * quantity
+            if cost <= self.balance:
                 self.assets[asset] += quantity
-                self.balance -= total_cost
+                self.balance -= cost
             else:
                 print("Недостаточно средств для покупки")
 
@@ -39,16 +39,16 @@ class Portfolio:
 if __name__ == "__main__":
     
     # Начальный баланс клиента
-    balance = 100000  
+    balance = random.randint(50_000, 1_000_000)
     portfolio = Portfolio(balance)
 
     # Покупка активов
-    portfolio.buy_asset(AssetPrice.LKOH, 5)
-    portfolio.buy_asset(AssetPrice.SBER, 10)
+    portfolio.buy_asset(AssetPrice.LKOH, random.randint(7, 15))
+    portfolio.buy_asset(AssetPrice.SBER, random.randint(50, 100))
     
     # Продажа активов
-    portfolio.sale_asset(AssetPrice.LKOH, 2)
-    portfolio.sale_asset(AssetPrice.SBER, 5)
+    portfolio.sale_asset(AssetPrice.LKOH, random.randint(5, 10))
+    portfolio.sale_asset(AssetPrice.SBER, random.randint(10, 50))
     
     # Получение стоимости портфеля и баланса
     print(f"Текущая стоимость портфеля: {portfolio.portfolio_value()} рублей")
