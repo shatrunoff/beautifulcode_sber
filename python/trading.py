@@ -20,6 +20,8 @@ class Portfolio:
                 self.balance -= cost
             else:
                 print("Недостаточно средств для покупки")
+        else:
+            print("Проверьте правильность заполненных данных")
 
     def sale_asset(self, asset, quantity):
         if asset in self.assets and quantity > 0:
@@ -28,6 +30,8 @@ class Portfolio:
                 self.balance += asset.value * quantity
             else:
                 print("Недостаточно активов для продажи")
+        else:
+            print("Проверьте правильность заполненных данных")
 
     def portfolio_value(self):
         value = Decimal(0)
